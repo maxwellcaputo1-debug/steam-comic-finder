@@ -55,4 +55,25 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    app.get("/profile/:steamid", async (req, res) => {
+
+    try {
+
+        const steamId = req.params.steamid;
+
+        const response = await axios.get(
+            `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${STEAM_API_KEY}&steamids=${steamId}`
+        );
+
+        res.json(response.data);
+
+    } catch (err) {
+
+        res.status(500).json({
+            error: "Failed to fetch profile."
+        });
+
+    }
+
+});
 });
