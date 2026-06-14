@@ -14,8 +14,9 @@ res.send("Steam Comic Finder API Running");
 });
 
 // Resolve Steam vanity URL
-app.get("/resolve/", async (req, res) => {
+app.get("/resolve/:vanity", async (req, res) => {
 
+```
 try {
 
     const response = await axios.get(
@@ -39,12 +40,14 @@ try {
     });
 
 }
+```
 
 });
 
 // Get owned games
-app.get("/games/", async (req, res) => {
+app.get("/games/:steamid", async (req, res) => {
 
+```
 try {
 
     const response = await axios.get(
@@ -70,12 +73,14 @@ try {
     });
 
 }
+```
 
 });
 
 // Get profile information
-app.get("/profile/", async (req, res) => {
+app.get("/profile/:steamid", async (req, res) => {
 
+```
 try {
 
     const response = await axios.get(
@@ -105,6 +110,7 @@ try {
     });
 
 }
+```
 
 });
 
@@ -112,8 +118,10 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
 
+```
 console.log(
     `Steam Comic Finder API running on port ${PORT}`
 );
+```
 
 });
